@@ -39,9 +39,10 @@ class User:
             self.votes.remove(targetVote)
             targetVote.end()
 
-    def start_vote(self, targetVote):
+    def begin_vote(self, targetVote):
         if targetVote in self.votes:
-            targetVote.start()
+            targetVote.begin()
+
 
     def end_vote(self, targetVote):
         if targetVote in self.votes:
