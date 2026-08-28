@@ -13,12 +13,14 @@ class User:
         self.id = id
         self.position = position
         self.status = status
+
+        # a user can possess some votes and events
         self.votes = []
         self.events = []
 
-    def create_event(self, name, content, type):
+    def create_event(self, name, content, importance):
         t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        newEvent = Event(self, name, content, type, Status.UNSUBMITTED, self, t)
+        newEvent = Event(self, name, content, importance, Status.UNSUBMITTED, self, t)
         self.events.append(newEvent)
 
     def cancel_event(self, event):

@@ -8,5 +8,8 @@ class Status:
     UNSUBMITTED = "unsubmitted"
     SUBMITTED = "submitted"
     CANCELED = "canceled"
+    
     BEGIN = "begin"
     End = "end"
+    STOP = "stop"
+    ERROR = "error"

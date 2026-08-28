@@ -2,13 +2,13 @@
 Define the Event class
 '''
 
-from Utils.Status import Status
+from Utils.Status import *
 
 class Event:
-    def __init__(self, name, content, type, status, presenter, present_time):
+    def __init__(self, name, content, importance, status, presenter, present_time):
         self.name = name
         self.content = content
-        self.type = type  # common, important, nontrivial
+        self.importance = importance  # common, important, nontrivial
         self.status = status  # unfinished, finished, submitted, unsubmitted, canceled
 
         self.presenter = presenter
