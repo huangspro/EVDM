@@ -2,7 +2,7 @@
 define Vote class
 '''
 
-import Event
+from .Event import Event
 from Utils import Status
 
 class Vote:

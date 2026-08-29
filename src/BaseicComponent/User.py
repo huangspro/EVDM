@@ -4,8 +4,8 @@ Define user class.
 
 from datetime import datetime
 
-from Vote import *
-from Event import *
+from .Vote import Vote
+from .Event import Event
 from Message import *
 
 class User:

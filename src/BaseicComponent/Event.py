@@ -4,6 +4,7 @@ Define the Event class
 
 from Utils.Status import *
 
+
 class Event:
     def __init__(self, name, content, importance, status, presenter, present_time):
         self.name = name

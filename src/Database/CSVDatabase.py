@@ -4,6 +4,7 @@ implement database by csv
 import csv
 import os
 
+
 class CSVDatabase:
     def __init__(self, path="UserDatabase/Users.csv"):
         self.path = path
@@ -25,20 +26,22 @@ class CSVDatabase:
         with open(self.path, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
 
+            result = []
             for row in reader:
                 if row["name"] == str(name):
-                    return row
-
+                    result.append(row)
+            return result
         return None
 
     def find_by_password(self, password):
         with open(self.path, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
 
+            result = []
             for row in reader:
                 if row["password"] == str(password):
-                    return row
-
+                    result.append(row)
+            return result
         return None
 
     def find_by_email(self, email):
@@ -65,10 +68,11 @@ class CSVDatabase:
         with open(self.path, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
 
+            result = []
             for row in reader:
                 if row["position"] == str(position):
-                    return row
-
+                    result.append(row)
+            return result
         return None
 
     # remove a user

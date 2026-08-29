@@ -4,6 +4,7 @@ abstract database class for user
 
 from abc import ABC, abstractmethod
 
+
 class UserDatabase(ABC):
     def __init__(self):
         pass
