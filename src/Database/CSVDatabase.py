@@ -16,10 +16,22 @@ class CSVDatabase:
         if not os.path.exists(self.path):
             with open(self.path, "w", newline="", encoding="utf-8") as file:
                 writer = csv.writer(file)
-                writer.writerow(["name", "password", "id", "position", "status", "email", "phone", "organization"])  
+                writer.writerow(["name", "password", "id", "position", "status", "email", "phone", "organization"])
 
-    def insert(self, user):
-        pass
+    def insert(self, user, password):
+        # check if email or id exists
+        if self.find_by_email(user.email) is not None:
+            return False
+
+        if self.find_by_id(user.ID) is not None:
+            return False
+
+        # create new user
+        with open(self.path, "a", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow([user.name, password, user.ID, user.position, user.status, user.email, user.phone, user.organization])
+
+        return True
 
     # load a user in the database
     def find_by_name(self, name):
@@ -31,6 +43,7 @@ class CSVDatabase:
                 if row["name"] == str(name):
                     result.append(row)
             return result
+
         return None
 
     def find_by_password(self, password):
@@ -73,6 +86,7 @@ class CSVDatabase:
                 if row["position"] == str(position):
                     result.append(row)
             return result
+
         return None
 
     # remove a user

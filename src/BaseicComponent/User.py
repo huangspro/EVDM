@@ -11,13 +11,15 @@ from Message import *
 class User:
     def __init__(self, name, id, position, status, **kwargs):
         self.name = name
-        self.id = id
+        self.ID = id
         self.position = position
         self.status = status
         self.info = kwargs
 
         # extra info
         self.email = self.info["email"]
+        self.phone = self.info["phone"]
+        self.organization = self.info["organization"]
 
         # a user can possess some votes and events
         self.votes = []
