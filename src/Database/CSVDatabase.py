@@ -28,8 +28,15 @@ class CSVDatabase:
     def find_by_email(self):
         pass
 
-    def find_by_id(self):
-        pass
+    def find_by_id(path, user_id):
+    with open(path, "r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            if row["id"] == str(user_id):
+                return row
+
+    return None
 
     def find_by_position(self):
         pass
