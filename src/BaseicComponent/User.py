@@ -6,6 +6,7 @@ from datetime import datetime
 
 from Vote import *
 from Event import *
+from Message import *
 
 class User:
     def __init__(self, name, id, position, status):
@@ -17,7 +18,9 @@ class User:
         # a user can possess some votes and events
         self.votes = []
         self.events = []
+        self.messages = []
 
+    # event related methods
     def create_event(self, name, content, importance):
         t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         newEvent = Event(self, name, content, importance, Status.UNSUBMITTED, self, t)
@@ -28,6 +31,7 @@ class User:
             self.events.remove(event)
             event.cancel()
 
+    # vote related methods
     def create_vote(self, event, options):
         if event.status == Status.SUBMITTED or event.status == Status.UNFINISHED:
             t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -47,3 +51,8 @@ class User:
     def end_vote(self, targetVote):
         if targetVote in self.votes:
             targetVote.end()
+
+    # message related methods
+    def create_message(self, message):
+        self.messages.append(message)
+
