@@ -3,30 +3,39 @@ implement database by csv
 '''
 
 class CSVDatabase:
-    def __init__(self, path = "UserDatabase/Users.csv"):
+    def __init__(self, path="UserDatabase/Users.csv"):
         self.path = path
 
-    def add(self, user):
+        # create directory
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+
+        # create csv file
+        if not os.path.exists(self.path):
+            with open(self.path, "w", newline="", encoding="utf-8") as file:
+                writer = csv.writer(file)
+                writer.writerow(["name", "password", "id", "position", "status", "email", "phone", "organization"])  
+
+    def insert(self, user):
         pass
 
     # load a user in the database
-    def load_by_username(self):
+    def find_by_username(self):
         pass
 
-    def load_by_password(self):
+    def find_by_password(self):
         pass
 
-    def load_by_email(self):
+    def find_by_email(self):
         pass
 
-    def load_by_id(self):
+    def find_by_id(self):
         pass
 
-    def load_by_position(self):
+    def find_by_position(self):
         pass
 
     # remove a user
-    def remove(self, user):
+    def delete(self, user):
         pass
 
     # change the info of a user
