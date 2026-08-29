@@ -9,11 +9,15 @@ from Event import *
 from Message import *
 
 class User:
-    def __init__(self, name, id, position, status):
+    def __init__(self, name, id, position, status, **kwargs):
         self.name = name
         self.id = id
         self.position = position
         self.status = status
+        self.info = kwargs
+
+        # extra info
+        self.email = self.info["email"]
 
         # a user can possess some votes and events
         self.votes = []
