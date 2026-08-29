@@ -1,6 +1,8 @@
 '''
 implement database by csv
 '''
+import csv
+import os
 
 class CSVDatabase:
     def __init__(self, path="UserDatabase/Users.csv"):
@@ -19,27 +21,55 @@ class CSVDatabase:
         pass
 
     # load a user in the database
-    def find_by_username(self):
-        pass
+    def find_by_name(self, name):
+        with open(self.path, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
 
-    def find_by_password(self):
-        pass
+            for row in reader:
+                if row["name"] == str(name):
+                    return row
 
-    def find_by_email(self):
-        pass
+        return None
 
-    def find_by_id(path, user_id):
-    with open(path, "r", newline="", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
+    def find_by_password(self, password):
+        with open(self.path, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
 
-        for row in reader:
-            if row["id"] == str(user_id):
-                return row
+            for row in reader:
+                if row["password"] == str(password):
+                    return row
 
-    return None
+        return None
 
-    def find_by_position(self):
-        pass
+    def find_by_email(self, email):
+        with open(self.path, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                if row["email"] == str(email):
+                    return row
+
+        return None
+
+    def find_by_id(self, user_id):
+        with open(self.path, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                if row["id"] == str(user_id):
+                    return row
+
+        return None
+
+    def find_by_position(self, position):
+        with open(self.path, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                if row["position"] == str(position):
+                    return row
+
+        return None
 
     # remove a user
     def delete(self, user):
