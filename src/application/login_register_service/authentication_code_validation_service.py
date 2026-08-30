@@ -26,3 +26,6 @@ class AuthenticationCodeValidationService():
         code = self.generate_code()
         self.email_sender.send(prompt + code)
         return self.client_validation_code(code)
+
+    def validate_user_by_email(self, user):
+        self.send_code()

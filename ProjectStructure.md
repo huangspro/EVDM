@@ -1,3 +1,4 @@
+```
 .
 ├── api
 ├── command.sh
@@ -5,6 +6,11 @@
 ├── README.md
 ├── src
 │   ├── application
+│   │   └── login_register_service
+│   │       ├── authentication_code_validation_service.py
+│   │       ├── email_send_service.py
+│   │       ├── login_service.py
+│   │       └── register_service.py
 │   ├── domain
 │   │   ├── factories
 │   │   │   └── make_domain.py
@@ -15,11 +21,13 @@
 │   │   │   ├── user.py
 │   │   │   └── vote.py
 │   │   ├── repository
+│   │   │   ├── meeting_database.py
 │   │   │   └── user_database.py
 │   │   └── services
 │   ├── infrastructure
 │   │   ├── database
 │   │   │   └── csv_database.py
+│   │   ├── email_service
 │   │   └── message
 │   │       ├── picture_message.py
 │   │       └── test_message.py
@@ -34,4 +42,5 @@
 └── UserDatabase
     └── Users.csv
 
-19 directories, 16 files
+21 directories, 21 files
+```

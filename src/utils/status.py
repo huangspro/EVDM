@@ -21,3 +21,5 @@ class Status:
 
     USER_EXISTS = "user_exists"
     REGISTER_SUCCESSFUL = "register_successful"
+
+    AUTHENTICATION_FAILED = "authentication_failed"

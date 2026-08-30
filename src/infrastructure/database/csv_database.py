@@ -4,10 +4,10 @@ implement database by csv
 import csv
 import os
 
-from domain.repository import user_database
+from domain.repository.user_database import UserDatabase
 from domain.model.user import User
 
-class CSVDatabase(user_database.UserDatabase):
+class CSVDatabase(UserDatabase):
 
     def __init__(self, path="UserDatabase/Users.csv"):
         super().__init__()

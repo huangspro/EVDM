@@ -7,14 +7,16 @@ class LoginService:
         self.authentication_validator = authentication_validator
 
     def validate_user(self, user, password):
-        self.authentication_validator()
-        
-        user_from_database = self.database.find_user_by_attr("id", user.id)
-        if len(user_from_database) != 1:
-            return Status.USER_NOT_FOUND
+        if self.authentication_validator.validate_user_by_email(user.email) is False:
+            return Status.AUTHENTICATION_FAILED
 
         else:
-            if password != user_from_database.password:
-                return Status.WRONG_PASSWORD
+            user_from_database = self.database.find_user_by_attr("id", user.id)
+            if len(user_from_database) != 1:
+                return Status.USER_NOT_FOUND
+
             else:
-                return Status.LOGIN_SUCCESSFUL
+                if password != user_from_database.password:
+                    return Status.WRONG_PASSWORD
+                else:
+                    return Status.LOGIN_SUCCESSFUL
