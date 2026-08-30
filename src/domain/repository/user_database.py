@@ -11,36 +11,20 @@ class UserDatabase(ABC):
 
     # add a user in the database
     @abstractmethod
-    def insert(self, user):
+    def insert(self, user, password):
         pass
 
-    # load a user in the database
+    # find a user in the database
     @abstractmethod
-    def find_by_username(self):
-        pass
-
-    @abstractmethod
-    def find_by_password(self):
-        pass
-
-    @abstractmethod
-    def find_by_email(self):
-        pass
-
-    @abstractmethod
-    def find_by_id(self):
-        pass
-
-    @abstractmethod
-    def find_by_position(self):
-        pass
-
-    # remove a user
-    @abstractmethod
-    def delete(self, user):
+    def find_user_by_attr(self, attr_name, attr_value):
         pass
 
     # change the info of a user
     @abstractmethod
     def update(self, user):
+        pass
+
+    # delete a user
+    @abstractmethod
+    def delete(self, user):
         pass

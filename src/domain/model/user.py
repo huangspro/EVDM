@@ -7,6 +7,7 @@ from datetime import datetime
 from .vote import Vote
 from .event import Event
 from utils.status import Status
+from domain.message import message
 
 class User:
     def __init__(self, name, id, position, status, **kwargs):

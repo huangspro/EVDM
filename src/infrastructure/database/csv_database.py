@@ -4,9 +4,13 @@ implement database by csv
 import csv
 import os
 
+from domain.repository import user_database
+from domain.model.user import User
 
-class CSVDatabase:
+class CSVDatabase(user_database.UserDatabase):
+
     def __init__(self, path="UserDatabase/Users.csv"):
+        super().__init__()
         self.path = path
 
         # create directory
@@ -20,10 +24,10 @@ class CSVDatabase:
 
     def insert(self, user, password):
         # check if email or id exists
-        if self.find_by_email(user.email) is not None:
+        if len(self.find_user_by_attr("email", user.email)) != 0:
             return False
 
-        if self.find_by_id(user.ID) is not None:
+        if len(self.find_user_by_attr("id", user.ID)) != 0:
             return False
 
         # create new user
@@ -34,56 +38,13 @@ class CSVDatabase:
         return True
 
     # load a user in the database
-    def find_by_name(self, name):
+    def find_user_by_attr(self, attr_name, attr_value):
         with open(self.path, "r", newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
 
             result = []
             for row in reader:
-                if row["name"] == str(name):
-                    result.append(row)
-            return result
-
-        return None
-
-    def find_by_password(self, password):
-        with open(self.path, "r", newline="", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-
-            result = []
-            for row in reader:
-                if row["password"] == str(password):
-                    result.append(row)
-            return result
-        return None
-
-    def find_by_email(self, email):
-        with open(self.path, "r", newline="", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-
-            for row in reader:
-                if row["email"] == str(email):
-                    return row
-
-        return None
-
-    def find_by_id(self, user_id):
-        with open(self.path, "r", newline="", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-
-            for row in reader:
-                if row["id"] == str(user_id):
-                    return row
-
-        return None
-
-    def find_by_position(self, position):
-        with open(self.path, "r", newline="", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-
-            result = []
-            for row in reader:
-                if row["position"] == str(position):
+                if row[str(attr_name)] == str(attr_value):
                     result.append(row)
             return result
 
