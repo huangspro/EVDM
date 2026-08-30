@@ -6,7 +6,7 @@ from datetime import datetime
 
 from .Vote import Vote
 from .Event import Event
-from Message import *
+
 
 class User:
     def __init__(self, name, id, position, status, **kwargs):

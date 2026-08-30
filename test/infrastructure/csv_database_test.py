@@ -1,5 +1,4 @@
-from Database.CSVDatabase import CSVDatabase
-from Database.UserDatabase import UserDatabase
+from infrastructure.database.CSVDatabase import CSVDatabase
 from BaseicComponent.User import User
 
 

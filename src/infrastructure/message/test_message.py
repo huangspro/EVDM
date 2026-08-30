@@ -2,7 +2,7 @@
 text message
 '''
 
-from Message import Message
+from domain.message import message
 from Utils.Type import *
 
 class TextMessage(Message):
