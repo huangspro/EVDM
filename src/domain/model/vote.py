@@ -2,8 +2,8 @@
 define Vote class
 '''
 
-from .Event import Event
-from Utils import Status
+from .event import Event
+from utils.status import Status
 
 class Vote:
     def __init__(self, event, status, options, presenter, present_time):

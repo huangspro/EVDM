@@ -2,7 +2,7 @@
 Define the Event class
 '''
 
-from Utils.Status import *
+from utils.status import Status
 
 
 class Event:

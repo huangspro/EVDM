@@ -4,9 +4,9 @@ Define user class.
 
 from datetime import datetime
 
-from .Vote import Vote
-from .Event import Event
-
+from .vote import Vote
+from .event import Event
+from utils.status import Status
 
 class User:
     def __init__(self, name, id, position, status, **kwargs):
