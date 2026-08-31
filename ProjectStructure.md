@@ -9,7 +9,8 @@
 │   │   └── login_register_service
 │   │       ├── authentication_code_validation_service.py
 │   │       ├── login_service.py
-│   │       └── register_service.py
+│   │       ├── register_service.py
+│   │       └── start_a_meeting_for_theme.py
 │   ├── domain
 │   │   ├── factories
 │   │   │   └── make_domain.py
@@ -46,5 +47,5 @@
 └── UserDatabase
     └── Users.csv
 
-21 directories, 25 files
+21 directories, 26 files
 ```

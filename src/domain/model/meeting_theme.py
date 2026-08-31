@@ -1,12 +1,17 @@
 from .meeting import Meeting
-
+from utils.type import MEETINGTYPE
 
 class MeetingTheme(Meeting):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name):
+        super().__init__(name, MEETINGTYPE.THEME)
         self.theme = ""
         self.event = []
         self.vote = []
+        self.users = []
+
+    def add_user(self, user):
+        if user not in self.users:
+            self.users.append(user)
 
     def add_event(self, event):
         if event not in self.event:
@@ -38,7 +43,7 @@ class MeetingTheme(Meeting):
 
     def start_vote(self, vote):
         if vote in self.vote:
-            vote.start()
+            vote.begin()
 
 
     def end_vote(self, vote):
@@ -50,3 +55,6 @@ class MeetingTheme(Meeting):
         if vote in self.vote:
             self.theme = vote.result
             return vote.result()
+
+    def confirm_theme(self, final_theme):
+        self.theme = final_theme

@@ -21,6 +21,7 @@ class Vote:
     def begin(self):
         self.status = Status.BEGIN
 
+
     # end a vote
     def end(self):
         self.status = Status.END
