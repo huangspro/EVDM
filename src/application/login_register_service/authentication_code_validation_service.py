@@ -6,7 +6,7 @@ the user is valid.
 '''
 
 import random
-from .email_send_service import EmailSendService
+
 
 class AuthenticationCodeValidationService():
     def __init__(self, email_sender):

@@ -8,7 +8,6 @@
 │   ├── application
 │   │   └── login_register_service
 │   │       ├── authentication_code_validation_service.py
-│   │       ├── email_send_service.py
 │   │       ├── login_service.py
 │   │       └── register_service.py
 │   ├── domain
@@ -18,6 +17,10 @@
 │   │   │   └── message.py
 │   │   ├── model
 │   │   │   ├── event.py
+│   │   │   ├── meeting_agenda.py
+│   │   │   ├── meeting_proposal.py
+│   │   │   ├── meeting.py
+│   │   │   ├── meeting_theme.py
 │   │   │   ├── user.py
 │   │   │   └── vote.py
 │   │   ├── repository
@@ -32,6 +35,7 @@
 │   │       ├── picture_message.py
 │   │       └── test_message.py
 │   └── utils
+│       ├── email_send_service.py
 │       ├── status.py
 │       └── type.py
 ├── test
@@ -42,5 +46,5 @@
 └── UserDatabase
     └── Users.csv
 
-21 directories, 21 files
+21 directories, 25 files
 ```

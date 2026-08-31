@@ -6,3 +6,8 @@ class IMPORTANCE:
 class MESSAGETYPE:
     TEXT = "text"
     PICTURE = "picture"
+
+class MEETINGTYPE:
+    THEME = "theme"
+    AGENDA = "agenda"
+    PROPOSAL = "proposal"
