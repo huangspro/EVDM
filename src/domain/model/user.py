@@ -6,11 +6,11 @@ from datetime import datetime
 
 from .vote import Vote
 from .event import Event
-from utils.status import Status
+from utils.status import *
 from .message import Message
 
 class User:
-    def __init__(self, name, id, position, status, **kwargs):
+    def __init__(self, name:str, id:str, position:str, status:UserStatus, **kwargs):
         self.name = name
         self.ID = id
         self.position = position
@@ -27,39 +27,38 @@ class User:
         self.events = []
         self.messages = []
 
+
     # event related methods
-    def create_event(self, name, content, importance):
-        t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        newEvent = Event(self, name, content, importance, Status.UNSUBMITTED, self, t)
+    def create_event(self, name:str, content:str, importance:str):
+        t = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        newEvent = Event(name, content, importance, EventStatus.UNSUBMITTED, self, t)
         self.events.append(newEvent)
 
-    def cancel_event(self, event):
-        if event.status != Status.END and event in self.events:
+    def cancel_event(self, event:Event):
+        if event.status != EventStatus.CANCELED and event in self.events:
             self.events.remove(event)
-            event.cancel()
+            event.status = EventStatus.CANCELED
+
+    def summit_event(self, event:Event):
+        if event.status == EventStatus.UNSUBMITTED and event in self.events:
+            event.status = EventStatus.SUBMITTED
+
 
     # vote related methods
-    def create_vote(self, event, options):
-        if event.status == Status.SUBMITTED or event.status == Status.UNFINISHED:
-            t = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            newVote = Vote(self, event, Status.UNSUBMITTED, options, self, t)
+    def create_vote(self, event:Event, options:list):
+        if event.status == EventStatus.SUBMITTED:
+            t = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            newVote = Vote(event, VoteStatus.UNSUBMITTED, options, self, t)
             self.votes.append(newVote)
 
-    def cancel_vote(self, targetVote):
-        if len(self.votes) > 0 and targetVote in self.votes:
-            self.votes.remove(targetVote)
-            targetVote.end()
+    def summit_vote(self, target_vote:Vote):
+        if target_vote in self.votes and target_vote.status ==VoteStatus.UNSUBMITTED:
+            target_vote.status = VoteStatus.SUBMITTED
 
-    def begin_vote(self, targetVote):
-        if targetVote in self.votes:
-            targetVote.begin()
+    def cancel_vote(self, target_vote):
+        if target_vote in self.votes and target_vote.status != VoteStatus.CANCELED:
+            self.votes.remove(target_vote)
+            target_vote.status = VoteStatus.CANCELED
 
 
-    def end_vote(self, targetVote):
-        if targetVote in self.votes:
-            targetVote.end()
-
-    # message related methods
-    def create_message(self, message):
-        self.messages.append(message)
 

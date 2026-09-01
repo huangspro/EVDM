@@ -1,12 +1,9 @@
 ```
 .
+├── api
+├── command.sh
 ├── ProjectStructure.md
 ├── README.md
-├── UserDatabase
-│   └── Users.csv
-├── classes.png
-├── command.sh
-├── packages.png
 ├── src
 │   ├── application
 │   │   └── login_register_service
@@ -17,11 +14,12 @@
 │   ├── domain
 │   │   ├── factories
 │   │   │   └── make_domain.py
+│   │   ├── message
 │   │   ├── model
 │   │   │   ├── event.py
-│   │   │   ├── meeting.py
 │   │   │   ├── meeting_agenda.py
 │   │   │   ├── meeting_proposal.py
+│   │   │   ├── meeting.py
 │   │   │   ├── meeting_theme.py
 │   │   │   ├── message.py
 │   │   │   ├── user.py
@@ -31,15 +29,18 @@
 │   │   │   └── user_database.py
 │   │   └── services
 │   ├── infrastructure
-│   │   └── database
-│   │       └── csv_database.py
+│   │   ├── database
+│   │   │   └── csv_database.py
+│   │   └── message
 │   └── utils
 │       ├── email_send_service.py
 │       ├── status.py
 │       └── type.py
-└── test
-    └── infrastructure
-        └── csv_database_test.py
+├── test
+│   ├── csv_database_test.py
+│   └── domain_test.py
+└── UserDatabase
+    └── Users.csv
 
-15 directories, 26 files
+17 directories, 25 files
 ```

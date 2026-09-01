@@ -2,11 +2,12 @@
 Define the Event class
 '''
 
-from utils.status import Status
+from utils.status import *
+from utils.type import *
 
 
 class Event:
-    def __init__(self, name, content, importance, status, presenter, present_time):
+    def __init__(self, name:str, content:str, importance:IMPORTANCE, status:EventStatus, presenter, present_time:str):
         self.name = name
         self.content = content
         self.importance = importance  # common, important, nontrivial
@@ -14,6 +15,3 @@ class Event:
 
         self.presenter = presenter
         self.present_time = present_time
-
-    def cancel(self):
-        self.status = Status.UNSUBMITTED

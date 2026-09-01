@@ -1,11 +1,12 @@
-'''
+"""
 implement database by csv
-'''
+"""
+
 import csv
 import os
 
 from domain.repository.user_database import UserDatabase
-from domain.model.user import User
+
 
 class CSVDatabase(UserDatabase):
 
@@ -33,7 +34,8 @@ class CSVDatabase(UserDatabase):
         # create new user
         with open(self.path, "a", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow([user.name, password, user.ID, user.position, user.status, user.email, user.phone, user.organization])
+            writer.writerow(
+                [user.name, password, user.ID, user.position, user.status, user.email, user.phone, user.organization])
 
         return True
 
