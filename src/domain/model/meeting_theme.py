@@ -1,12 +1,12 @@
-from .meeting import Meeting
 from utils.type import MEETINGTYPE
 
-class MeetingTheme(Meeting):
+
+class MeetingTheme():
     def __init__(self, name):
         super().__init__(name, MEETINGTYPE.THEME)
         self.theme = ""
-        self.event = []
-        self.vote = []
+        self.events = []
+        self.votes = []
         self.users = []
 
     def add_user(self, user):
@@ -15,7 +15,7 @@ class MeetingTheme(Meeting):
 
     def add_event(self, event):
         if event not in self.event:
-            self.event.append(event)
+            self.events.append(event)
 
 
     def show_event(self, event):
@@ -24,17 +24,17 @@ class MeetingTheme(Meeting):
 
     def remove_event(self, event):
         if event in self.event:
-            self.event.remove(event)
+            self.events.remove(event)
 
 
     def add_vote(self, vote):
         if vote not in self.vote:
-            self.vote.append(vote)
+            self.votes.append(vote)
 
 
     def remove_vote(self, vote):
         if vote in self.vote:
-            self.vote.remove(vote)
+            self.votes.remove(vote)
 
 
     def show_vote(self, vote):

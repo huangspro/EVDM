@@ -14,12 +14,10 @@
 │   ├── domain
 │   │   ├── factories
 │   │   │   └── make_domain.py
-│   │   ├── message
 │   │   ├── model
 │   │   │   ├── event.py
 │   │   │   ├── meeting_agenda.py
 │   │   │   ├── meeting_proposal.py
-│   │   │   ├── meeting.py
 │   │   │   ├── meeting_theme.py
 │   │   │   ├── message.py
 │   │   │   ├── user.py
@@ -42,5 +40,5 @@
 └── UserDatabase
     └── Users.csv
 
-17 directories, 25 files
+16 directories, 24 files
 ```

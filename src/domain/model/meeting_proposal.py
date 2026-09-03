@@ -1,7 +1,7 @@
-from .meeting import Meeting
+from utils.type import MEETINGTYPE
 
 
-class MeetingTheme(Meeting):
+class MeetingTheme():
     def __init__(self):
         super().__init__()
         self.proposal = []

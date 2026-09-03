@@ -1,6 +1,6 @@
-'''
+"""
 Define user class.
-'''
+"""
 
 from datetime import datetime
 
